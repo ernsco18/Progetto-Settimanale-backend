@@ -10,8 +10,6 @@ public class Immagine extends ElementoMultimediale {
         this.luminosita = luminosita;
     }
 
-
-
     public int getLuminosita() {
         return luminosita;
     }
@@ -35,10 +33,6 @@ public class Immagine extends ElementoMultimediale {
 
     @Override
     public void mostra(){
-        System.out.println("Mostra Titolo Immagine: " + titolo);
-    }
-
-    public void show(){
-        System.out.println("Titolo Immagine: " + titolo + " di luminosita': " + luminosita);
+        System.out.println("Mostra Titolo Immagine: " + titolo + ", di luminosita': " + luminosita);
     }
 }
