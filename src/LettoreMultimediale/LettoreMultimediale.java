@@ -85,10 +85,9 @@ public class LettoreMultimediale {
     private void eseguiElemento(int indice) {
         ElementoMultimediale elemento = elementi[indice];
 
+
         if (elemento instanceof Riproducibile) {
             ((Riproducibile) elemento).play();
-        } else if (elemento instanceof Immagine) {
-            elemento.mostra();
         }
 
         if (elemento instanceof VolumeRegolabile) {
@@ -98,12 +97,17 @@ public class LettoreMultimediale {
         if (elemento instanceof Video) {
             gestisciLuminosita((Video) elemento);
         }
+
+        if (elemento instanceof LuminositaRegolabile) {
+            gestisciLuminositaImmagine((Immagine) elemento);
+        }
     }
 
     private void gestisciVolume(VolumeRegolabile elemento) {
         System.out.println("\nGestione volume:");
         System.out.println("1. Alza volume");
         System.out.println("2. Abbassa volume");
+        System.out.println("3. Continua");
 
         int scelta = scanner.nextInt();
         scanner.nextLine();
@@ -115,15 +119,18 @@ public class LettoreMultimediale {
             case 2:
                 elemento.abbassaVolume();
                 break;
+            case 3:
+                break;
             default:
                 System.out.println("Errore!");
         }
     }
 
     private void gestisciLuminosita(Video video) {
-        System.out.println("\nGestione luminosità:");
-        System.out.println("1. Aumenta luminosità");
-        System.out.println("2. Diminuisci luminosità");
+        System.out.println("\nGestione luminosita':");
+        System.out.println("1. Aumenta luminosita'");
+        System.out.println("2. Diminuisci luminosita'");
+        System.out.println("3. Continua");
 
         int scelta = scanner.nextInt();
         scanner.nextLine();
@@ -134,6 +141,31 @@ public class LettoreMultimediale {
                 break;
             case 2:
                 video.abbassaLuminosita();
+                break;
+                case 3:
+                break;
+            default:
+                System.out.println("Errore!");
+        }
+    }
+
+    private void gestisciLuminositaImmagine(Immagine immagine) {
+        System.out.println("\nGestione luminosita':");
+        System.out.println("1. Aumenta luminosita'");
+        System.out.println("2. Diminuisci luminosita'");
+        System.out.println("3. Continua");
+
+        int scelta = scanner.nextInt();
+        scanner.nextLine();
+
+        switch (scelta) {
+            case 1:
+                immagine.alzaLuminosita();
+                break;
+            case 2:
+                immagine.abbassaLuminosita();
+                break;
+            case 3:
                 break;
             default:
                 System.out.println("Errore!");
